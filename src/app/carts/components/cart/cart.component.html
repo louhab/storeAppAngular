@@ -1,0 +1,85 @@
+<div class="cartBox">
+   
+   <form [formGroup]="form">
+        <div class="row">
+            <div class="col-md-3">
+                <label for="">Start Date </label>
+                <input type="date" formControlName="start"  class="form-control">
+            </div>
+            <div class="col-md-3">
+                <label for="">End Date </label>
+                <input type="date" formControlName="end"  class="form-control">
+            </div>
+            <div class="col-md-2 d-flex align-items-end">
+              
+                <button class="btn btn-success" (click)="applyFilter()">Applay</button>
+            </div>
+        </div>
+   </form>
+    <table class="table table-stripped">
+        <thead>
+            <tr>
+       
+                <th>Date</th>
+                <th>Quantity</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of carts; let index = index ">
+          
+                <td>
+                    {{item.date | date:"shortDate"}}
+                </td>
+                <td>
+                    {{item.products.length}}
+                </td>
+                <td>
+                    <button class="btn btn-danger" (click)="deleteCart(item.id)">Delete</button>
+                    <button class="btn btn-primary" >View </button>
+                </td>
+            </tr>
+        </tbody>
+        <tfoot class="mt-3">
+            <th></th>
+            <th></th>
+            <th>Totale : {{totale}} L.E</th>
+            <th >
+                <button class="btn btn-success" style="color: black;" (click)="addCart()">Order Now </button>
+            </th>
+        </tfoot>
+    </table>
+</div>
+<div *ngIf="success" class="alert alert-success" role="alert">
+<strong>
+    well done !
+</strong>
+Your order is successfully done !
+</div>
+<!-- Button trigger modal -->
+  
+ <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    Launch demo modal
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>

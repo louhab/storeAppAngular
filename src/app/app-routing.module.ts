@@ -1,0 +1,28 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import {Routes , RouterModule } from '@angular/router';
+import { AllProductsComponent } from './products/components/all-products/all-products.component';
+import {ProductDetailsComponent} from './products/components/product-details/product-details.component';
+import { CartComponent } from './carts/components/cart/cart.component';
+const routes :Routes = [ 
+      {
+        path:'products' ,component :AllProductsComponent,
+      },
+      {
+        path : 'details/:id' , component : ProductDetailsComponent,
+      }, 
+      {
+        path : 'cart' , component : CartComponent
+      },
+      {
+        path: '**' , redirectTo: 'cart', pathMatch: 'full'
+      }
+]
+
+@NgModule({
+  declarations: [],
+  imports: [CommonModule , RouterModule.forRoot(routes)],
+  exports: [RouterModule],
+
+})
+export class AppRoutingModule { }
